@@ -7,9 +7,10 @@ const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
 
-logger.info('connecting to', config.MONGODB_URI)
+const url = 'mongodb+srv://wizard5-0:wizardry5.0@cluster0.3nqdycw.mongodb.net/noteApp?retryWrites=true&w=majority'
 
-mongoose.connect(config.MONGODB_URI)
+logger.info('connecting to', config.MONGODB_URI || url)
+mongoose.connect(config.MONGODB_URI || url)
         .then(() => logger.info('connected to MongoDB'))
         .catch(err => logger.error('error connecting to MongoDB:', err.message))
 
